@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+
+
+<style>
+  h1{
+    text-align: center;
+    font-size: 80px;
+    font-weight:bolder;
+    font-family: Impact;
+  }
+  .thediv{
+    text-align: center;
+    font-size: 40px;
+  }
+  button{
+    padding: 35px 60px;
+    background-color: blue;
+    color: wheat;
+    
+
+  }
+  button:hover{
+    background-color: green;
+
+  }
+  .thedivofbutton {
+    text-align: center;
+    margin:20px 0px;
+  }
+  .contain{
+    text-align: center;
+    font-size: 35px;
+  }
+  #tona{
+    margin-top: 60px;
+  }
+</style>
+</head>
+
+<body>
+
+  <h1>Quote of the Day</h1>
+  <div class="thediv">Press the button below to recieve a random quote!</div>
+  <div class="thedivofbutton "><button onclick="makeqoute()">clcik</button></div>
+<div class="contain">
+  <div id="ona"></div>
+<div id="tona"></div>
+</div>
+<script>
+  function makeqoute(){
+    
+    var arrOfqoute=[{nameofauth:" ",theqoute:" "},{nameofauth:"-Oscar Wilde",theqoute:"“Be yourself; everyone else is already taken.”"},
+    {nameofauth:"-mail jebson",theqoute:"“I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.”"},
+    {nameofauth:"-klaous schwab",theqoute:"“Be yourself; everyone else is already taken.”"},
+    {nameofauth:"-vladimair zelensky",theqoute:"“So many books, so little time.”"},
+    {nameofauth:"-robert mordkh",theqoute:"“You only live once, but if you do it right, once is enough.”"},
+    {nameofauth:"-robert mordkh",theqoute:"“You only live once, ”"},
+    {nameofauth:"-jevara",theqoute:"“no bain no gain”"},
+    {nameofauth:"-c.ronaldo",theqoute:"“be your self.”"}
+  ];
+    var numm=Math.ceil( Math.random()*(arrOfqoute.length-1));
+    document.getElementById("ona").innerHTML=arrOfqoute[numm].theqoute;
+    document.getElementById("tona").innerHTML=arrOfqoute[numm].nameofauth;
+
+  }
+</script>
+</body>
+</html>
