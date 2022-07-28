@@ -6,6 +6,28 @@
 
 
 <style>
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px rgb(238, 232, 232); 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(60, 104, 93, 0.239); 
+  border-radius: 20px;
+}
+
+  body{
+
+   padding: 0px;
+   margin: 0px; 
+   background-color: black;
+  }
   h1{
     text-align: center;
     font-size: 80px;
@@ -17,14 +39,26 @@
     font-size: 40px;
   }
   button{
-    padding: 35px 60px;
-    background-color: blue;
-    color: wheat;
+    display: inline-block;
+   padding: 24px 32px;
+   border: 0;
+   text-decoration: none;
+   border-radius: 15px;
+   background-color: rgba(255,255,255,0.1);
+   border: 1px solid rgba(255,255,255,0.1);
+   backdrop-filter: blur(30px);
+   color: rgba(255, 255, 255, 0.631);
+   font-size: 14px;
+   letter-spacing: 2px;
+   cursor: pointer;
+   text-transform: uppercase;
     
-
+   background-color: rgba(239, 249, 251, 0.025);
+   border-radius:  25px 0px 25px 0px;
   }
   button:hover{
-    background-color: green;
+    
+    color: rgb(194, 224, 224);
 
   }
   .thedivofbutton {
@@ -38,33 +72,47 @@
   #tona{
     margin-top: 60px;
   }
+  .container{
+padding: 0px;
+margin: 0px;
+   min-height:100vh;
+    background-image: url(tv.jpg);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: azure;
+  }
 </style>
 </head>
 
 <body>
 
+ <div class="container">
+
   <h1>Quote of the Day</h1>
-  <div class="thediv">Press the button below to recieve a random quote!</div>
-  <div class="thedivofbutton "><button onclick="makeqoute()">clcik</button></div>
+  <div class="thediv">Press the button below to recieve a random quote from {RESTFUL}API!</div>
+  <div class="thedivofbutton "><button onclick="makeqoute()">CLICK</button></div>
 <div class="contain">
   <div id="ona"></div>
 <div id="tona"></div>
 </div>
+ </div>
 <script>
+
+  let thearrofqoute=[];
+ async function getqoutewithapi(){
+   let alldata=await fetch("https://programming-quotes-api.herokuapp.com/Quotes?count=0");
+    thearrofqoute=await alldata.json();
+  console.log(thearrofqoute);
+  }
+  getqoutewithapi();
   function makeqoute(){
     
-    var arrOfqoute=[{nameofauth:" ",theqoute:" "},{nameofauth:"-Oscar Wilde",theqoute:"“Be yourself; everyone else is already taken.”"},
-    {nameofauth:"-mail jebson",theqoute:"“I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.”"},
-    {nameofauth:"-klaous schwab",theqoute:"“Be yourself; everyone else is already taken.”"},
-    {nameofauth:"-vladimair zelensky",theqoute:"“So many books, so little time.”"},
-    {nameofauth:"-robert mordkh",theqoute:"“You only live once, but if you do it right, once is enough.”"},
-    {nameofauth:"-robert mordkh",theqoute:"“You only live once, ”"},
-    {nameofauth:"-jevara",theqoute:"“no bain no gain”"},
-    {nameofauth:"-c.ronaldo",theqoute:"“be your self.”"}
-  ];
-    var numm=Math.ceil( Math.random()*(arrOfqoute.length-1));
-    document.getElementById("ona").innerHTML=arrOfqoute[numm].theqoute;
-    document.getElementById("tona").innerHTML=arrOfqoute[numm].nameofauth;
+   
+    var numm=Math.ceil( Math.random()*(thearrofqoute.length-1));
+    console.log(numm);
+   document.getElementById("ona").innerHTML=thearrofqoute[numm].en;
+    document.getElementById("tona").innerHTML=thearrofqoute[numm].author;
 
   }
   
